@@ -1,16 +1,22 @@
 package com.carlos.curso.springboot.app.interceptor.springbootinterceptor.interceptors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Component("loadingTimeInterceptor")
@@ -29,6 +35,14 @@ public class LoadingTimeInterceptor implements HandlerInterceptor {
     long start = System.currentTimeMillis();
     request.setAttribute("start", start);
     Thread.sleep(new Random().nextInt(500));
+
+//    Map<String, String> json = new HashMap<>();
+//    json.put("error", "No tieens acceso a esta página");
+//    json.put("date", new Date().toString());
+//    response.setContentType("application/json");
+//    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+//    response.getWriter().write(new ObjectMapper().writeValueAsString(json));
+
     return true;
   }
 
