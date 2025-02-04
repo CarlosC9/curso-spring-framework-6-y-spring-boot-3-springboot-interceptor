@@ -16,6 +16,12 @@ public class MvcConfig implements WebMvcConfigurer {
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(loadingTimeInterceptor);
+    registry
+      .addInterceptor(loadingTimeInterceptor)
+      .addPathPatterns("/app/bar", "/app/foo");
+
+//    registry
+//      .addInterceptor(loadingTimeInterceptor)
+//      .excludePathPatterns("/app/bar", "/app/foo");
   }
 }

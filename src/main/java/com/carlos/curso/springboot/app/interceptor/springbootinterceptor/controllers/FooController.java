@@ -13,7 +13,6 @@ public class FooController {
 
   @GetMapping("/foo")
   public Map<String, String> foo() {
-
     return Collections.singletonMap("message", "handler foo dle controlador");
   }
 
